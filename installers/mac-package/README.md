@@ -16,6 +16,13 @@ bash installers/mac-package/build.sh \
 
 Without a signing identity this creates an unsigned pilot for controlled testing. To build a package for distribution, set `DIRECTNORTH_INSTALLER_IDENTITY` to the Developer ID Installer certificate identity and `DIRECTNORTH_NOTARY_PROFILE` to an existing `notarytool` keychain profile. With both set, the builder signs, notarizes, staples, and assesses the package. Before public distribution, include the [RustDesk license and corresponding upstream source](https://github.com/rustdesk/rustdesk/tree/1.5.3) with the release.
 
+To make separate downloads, pass `intel` or `apple-silicon` as the fourth argument to the builder. Each package includes just the matching app. Use these labels on the download page:
+
+- **Download for Mac (Apple silicon)** for Macs with an Apple M-series chip.
+- **Download for Mac (Intel)** for Macs with an Intel processor.
+
+Readers can check **Apple menu → About This Mac** if they are unsure.
+
 ## Pilot on a Second Mac
 
 1. Sign into the Mac, quit RustDesk if it is running, and open the package in Finder. Install to the startup disk.
