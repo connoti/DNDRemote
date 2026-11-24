@@ -40,8 +40,7 @@ if (substr_count($after, $marker) !== 1) {
     WP_CLI::error('The download notice position did not match exactly once.');
 }
 $notice = '<p class="private">Mac downloads are unsigned pilot installers. '
-    . 'Check Apple menu → About This Mac for your processor. '
-    . '<a href="https://github.com/rustdesk/rustdesk/tree/1.5.3">RustDesk source and license</a>.</p>';
+    . 'Check Apple menu → About This Mac for your processor.</p>';
 $after = str_replace($marker, $notice . $marker, $after);
 
 $home = getenv('HOME');
