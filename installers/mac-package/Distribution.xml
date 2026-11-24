@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<installer-gui-script minSpecVersion="2">
+  <title>DirectNorth Remote Access</title>
+  <options customize="never" hostArchitectures="arm64,x86_64"/>
+  <domains enable_anywhere="false" enable_currentUserHome="false" enable_localSystem="true"/>
+  <choices-outline>
+    <line choice="apple-silicon"/>
+    <line choice="intel"/>
+  </choices-outline>
+  <choice id="apple-silicon" visible="false" selected="system.sysctl('hw.machine') == 'arm64'">
+    <pkg-ref id="digital.directnorth.remoteaccess.rustdesk.arm64"/>
+  </choice>
+  <choice id="intel" visible="false" selected="system.sysctl('hw.machine') == 'x86_64'">
+    <pkg-ref id="digital.directnorth.remoteaccess.rustdesk.x86_64"/>
+  </choice>
+  <pkg-ref id="digital.directnorth.remoteaccess.rustdesk.arm64">rustdesk-arm64.pkg</pkg-ref>
+  <pkg-ref id="digital.directnorth.remoteaccess.rustdesk.x86_64">rustdesk-x86_64.pkg</pkg-ref>
+</installer-gui-script>

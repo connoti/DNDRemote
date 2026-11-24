@@ -14,4 +14,6 @@ This checks TCP reachability for the DirectNorth deployment and exits nonzero if
 
 ## Client Installers
 
+The [single Mac package](installers/mac-package/) includes the official RustDesk app for both Apple silicon and Intel and configures the signed-in Mac user's client for DirectNorth. The package source supports Developer ID signing and Apple notarization.
+
 The macOS and Windows helpers in `installers/` install the pinned upstream RustDesk client if it is absent and configure it for DirectNorth. Supply the server public key when prompted or through the `RUSTDESK_SERVER_KEY` environment variable. The helpers replace the existing `RustDesk2.toml` settings file. Back it up before running the helpers if you need to retain your settings.

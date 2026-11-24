@@ -1,0 +1,13 @@
+#!/bin/bash
+set -euo pipefail
+
+console_uid=$(/usr/bin/stat -f %u /dev/console)
+if [[ ${3:-} != / || "$console_uid" -lt 501 || "$console_uid" -eq 65534 ]]; then
+  echo 'Sign in to the Mac desktop and install to the startup disk.' >&2
+  exit 1
+fi
+
+if /usr/bin/pgrep -ix RustDesk >/dev/null; then
+  echo 'Quit RustDesk before installing DirectNorth Remote Access.' >&2
+  exit 1
+fi

@@ -1,0 +1,13 @@
+#!/bin/bash
+set -euo pipefail
+
+script_dir="$(cd -- "$(dirname -- "$0")" && pwd)"
+console_uid=$(/usr/bin/stat -f %u /dev/console)
+if [[ ${3:-} != / || "$console_uid" -lt 501 || "$console_uid" -eq 65534 ]]; then
+  echo 'A user must be signed in to configure RustDesk.' >&2
+  exit 1
+fi
+
+# Run all actions involving the user's home with the user's permissions.
+IFS= read -r key < "$script_dir/server-key"
+/usr/bin/sudo -H -u "#$console_uid" -- /bin/bash -s -- "$key" < "$script_dir/configure-user.sh"
